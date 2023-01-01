@@ -1,6 +1,6 @@
-import { Quizz } from '@/interfaces/quizz';
+import { Quiz } from '@/interfaces/quizz';
 
-export const getQuizzes = (): Quizz[] => {
+export const getQuizzes = (): Quiz[] => {
   return [
     {
       answer: 'MBAPPE',

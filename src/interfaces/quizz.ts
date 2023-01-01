@@ -1,4 +1,4 @@
-export interface Quizz {
+export interface Quiz {
   answer: string;
   emojis: string[];
 }
