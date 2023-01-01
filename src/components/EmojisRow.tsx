@@ -1,7 +1,7 @@
-import { Quizz } from '@/interfaces/quizz';
+import { Quiz } from '@/interfaces/quizz';
 
 type Props = {
-  quizz: Quizz;
+  quizz: Quiz;
 };
 
 const EmojisRow: React.FC<Props> = ({ quizz }) => {
