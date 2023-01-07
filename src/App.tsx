@@ -12,13 +12,15 @@ const App: React.FC = () => {
   const [isGameFinished, setGameStatus] = useState<boolean>(false);
   const [answersNumber, setAnswersNumber] = useState<number>(0);
 
-  const nextQuiz = (): void => {
+  const answerQuizz = (): void => {
+    if (answersNumber === quizzes.length - 1) setGameStatus(true);
     setAnswersNumber((a) => a + 1);
 
-    if (answersNumber < quizzes.length) setGameStatus(true);
-
     if (isGameFinished) return;
+  };
 
+  const nextQuizz = (): void => {
+    if (answersNumber > quizzes.length - 1) return;
     setQuiz(quizzes[answersNumber]);
   };
 
@@ -30,7 +32,12 @@ const App: React.FC = () => {
 
           <EmojisRow quizz={actualQuiz} />
 
-          <GuessForm isGameFinished={isGameFinished} nextQuiz={nextQuiz} quizz={actualQuiz} />
+          <GuessForm
+            answerQuizz={answerQuizz}
+            isGameFinished={isGameFinished}
+            nextQuizz={nextQuizz}
+            quizz={actualQuiz}
+          />
         </div>
       </section>
     </main>

@@ -6,5 +6,9 @@ export const getQuizzes = (): Quiz[] => {
       answer: 'MBAPPE',
       emojis: ['🗼', '🐢'],
     },
+    {
+      answer: 'MESSI',
+      emojis: ['🐐', '🔟'],
+    },
   ];
 };
