@@ -1,4 +1,4 @@
-import { Quiz } from '@/interfaces/quizz';
+import { Quiz } from '@/interfaces/interfaces';
 
 type Props = {
   quizz: Quiz;

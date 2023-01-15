@@ -4,7 +4,7 @@ import { FormikHelpers } from 'formik/dist/types';
 
 import { MyButton } from './MyButton';
 
-import { Quiz } from '@/interfaces/quizz';
+import { Quiz } from '@/interfaces/interfaces';
 
 interface Values {
   guess: string;
@@ -15,13 +15,20 @@ type Props = {
   answerQuizz: () => void;
   isGameFinished: boolean;
   nextQuizz: () => void;
+  countCorrectAnswer: () => void;
+  countWrongAnswer: () => void;
 };
 
-const GuessForm: React.FC<Props> = ({ quizz, answerQuizz, nextQuizz, isGameFinished }) => {
+const GuessForm: React.FC<Props> = ({
+  quizz,
+  answerQuizz,
+  nextQuizz,
+  isGameFinished,
+  countCorrectAnswer,
+  countWrongAnswer,
+}) => {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
-
-  if (isGameFinished) console.log('Juego terminado!');
 
   const handleClick = (): void => {
     if (isGameFinished) return;
@@ -44,7 +51,12 @@ const GuessForm: React.FC<Props> = ({ quizz, answerQuizz, nextQuizz, isGameFinis
 
           answerQuizz();
 
-          if (userGuess.includes(quizz.answer)) setIsCorrect(true);
+          if (userGuess.includes(quizz.answer)) {
+            setIsCorrect(true);
+            countCorrectAnswer();
+          } else {
+            countWrongAnswer();
+          }
           setSubmitting(false);
           resetForm();
         }}
@@ -57,22 +69,23 @@ const GuessForm: React.FC<Props> = ({ quizz, answerQuizz, nextQuizz, isGameFinis
             placeholder="Tu Jugador"
           />
 
-          {!isFormSubmitted && <MyButton type="submit">Adivinar!</MyButton>}
+          {!isFormSubmitted && <MyButton>Adivinar!</MyButton>}
+
+          {isFormSubmitted && (
+            <>
+              {isCorrect ? (
+                <span className="mt-3 -mb-2 font-bold text-green-500">Correcto!</span>
+              ) : (
+                <span className="mt-3 -mb-2 font-bold text-red-500">Incorrecto!</span>
+              )}
+            </>
+          )}
+
+          {!isGameFinished && isFormSubmitted && (
+            <MyButton onClick={() => handleClick()}>Siguiente</MyButton>
+          )}
         </Form>
       </Formik>
-
-      {isFormSubmitted && (
-        <>
-          {isCorrect ? (
-            <span className="mt-3 -mb-2 font-bold text-green-500">Correcto!</span>
-          ) : (
-            <span className="mt-3 -mb-2 font-bold text-red-500">Incorrecto!</span>
-          )}
-        </>
-      )}
-      {!isGameFinished && isFormSubmitted && (
-        <MyButton onClick={() => handleClick()}>Siguiente</MyButton>
-      )}
     </>
   );
 };
