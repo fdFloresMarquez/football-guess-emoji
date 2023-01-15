@@ -76,7 +76,13 @@ const GuessForm: React.FC<Props> = ({
               {isCorrect ? (
                 <span className="mt-3 -mb-2 font-bold text-green-500">Correcto!</span>
               ) : (
-                <span className="mt-3 -mb-2 font-bold text-red-500">Incorrecto!</span>
+                <>
+                  <span className="mt-3 -mb-2 font-bold text-red-500">Incorrecto!</span>
+                  <span className="mt-3 -mb-2 font-bold ">
+                    La respuesta correcta era:{' '}
+                    <span className="text-green-500">{quizz.answer}</span>
+                  </span>
+                </>
               )}
             </>
           )}
