@@ -11,10 +11,6 @@ export const getQuizzes = (): Quiz[] => {
       emojis: ['🗼', '🐢'],
     },
     {
-      answer: 'DI MARIA',
-      emojis: ['😇', '🍜'],
-    },
-    {
       answer: 'GRIEZZMANN',
       emojis: ['🧉', '🤴'],
     },
@@ -27,8 +23,12 @@ export const getQuizzes = (): Quiz[] => {
       emojis: ['💎', '👉'],
     },
     {
+      answer: 'DI MARIA',
+      emojis: ['😇', '🍜'],
+    },
+    {
       answer: 'SUAREZ',
-      emojis: ['🧛🏻‍♂️', '👉'],
+      emojis: ['🧛🏻‍♂️', '🔫'],
     },
     {
       answer: 'ZLATAN',
