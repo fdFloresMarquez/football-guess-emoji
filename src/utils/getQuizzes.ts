@@ -11,7 +11,7 @@ export const getQuizzes = (): Quiz[] => {
       emojis: ['🗼', '🐢'],
     },
     {
-      answer: 'GRIEZZMANN',
+      answer: 'GRIEZMANN',
       emojis: ['🧉', '🤴'],
     },
     {
